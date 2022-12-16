@@ -6,4 +6,4 @@ marshmallow
 python-dotenv
 flask-jwt-extended
 flask-migrate
-
+gunicorn
