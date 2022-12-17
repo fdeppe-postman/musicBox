@@ -24,7 +24,7 @@ def send_simple_message(to, subject, body):
     return requests.post(
 		f"https://api.mailgun.net/v3/{domain}/messages",
 		auth=("api", os.getenv("MAILGUN_API_KEY")),
-		data={"from": "Francisco <mailgun@{domain}>",
+		data={"from": f"Francisco <mailgun@{domain}>",
 			"to": [to],
 			"subject": subject,
 			"text": body})
@@ -39,7 +39,7 @@ class UserRegister(MethodView):
                 UserModel.email == user_data["email"],
             )
         ).first():
-            abort(409, message="A user with that name already exists")
+            abort(409, message="A user with that name/email already exists")
         
         user = UserModel(
             username=user_data["username"],
