@@ -21,6 +21,7 @@ from schemas import UserSchema, UserRegisterSchema
 from blocklist import BLOCKLIST
 
 blp = Blueprint("Users", "users", description="Operations on users")
+
 connection = redis.from_url(
     os.getenv("REDIS_URL")
 )  # Get this from Render.com or run in Docker
@@ -50,6 +51,9 @@ class UserRegister(MethodView):
         queue.enqueue(send_user_registration_email, user.email, user.username)
 
         return {"message": "User created successfully."}, 201
+
+
+
 
 
 @blp.route("/login")
