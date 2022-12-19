@@ -1,5 +1,4 @@
 import os
-import redis
 
 from flask import Flask, jsonify
 from flask_smorest import Api
@@ -7,8 +6,6 @@ from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 
-
-from rq import Queue
 from db import db
 from blocklist import BLOCKLIST
 
