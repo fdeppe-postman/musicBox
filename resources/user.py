@@ -27,7 +27,7 @@ from blocklist import BLOCKLIST
 blp = Blueprint("Users", "users", description="Operations on users")
 
 connection = redis.from_url(
-    os.getenv("REDIS_URL")
+    url = os.getenv("REDIS_URL")
 )
 queue = Queue("emails", connection=connection)
 
