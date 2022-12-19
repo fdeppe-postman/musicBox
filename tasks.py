@@ -6,8 +6,6 @@ import jinja2
 load_dotenv()
 
 DOMAIN = os.getenv("MAILGUN_DOMAIN")
-template_loader = jinja2.FileSystemLoader("templates")
-
 
 def send_simple_message(to, subject, body):
     return requests.post(
