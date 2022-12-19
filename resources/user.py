@@ -1,5 +1,9 @@
 import os
+
 import redis
+from rq import Queue
+from tasks import send_user_registration_email
+
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import (
@@ -11,9 +15,9 @@ from flask_jwt_extended import (
 )
 from passlib.hash import pbkdf2_sha256
 from sqlalchemy import or_
-from rq import Queue
 
-from tasks import send_user_registration_email
+
+
 
 from db import db
 from models import UserModel
@@ -23,7 +27,7 @@ from blocklist import BLOCKLIST
 blp = Blueprint("Users", "users", description="Operations on users")
 
 connection = redis.from_url(
-    os.getenv("rediss://red-cef0bgsgqg4b3ha44du0:ejVwn4DSLjPBnqhIjZ8hErZa3XAGDm98@ohio-redis.render.com:6379")
+    os.getenv("REDIS_URL")
 )
 queue = Queue("emails", connection=connection)
 
