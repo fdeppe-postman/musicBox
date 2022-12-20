@@ -1,4 +1,5 @@
 .env
+.venv
 .vscode
 __pychase__
 data.db
