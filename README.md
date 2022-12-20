@@ -1,3 +1,3 @@
-# this is the base project 
+# Music Box
 
-- going to use this as a boilerplate to create a new project out of# musicBox
+For creating, storing, and sharing Music playlists, songs, and more! 
