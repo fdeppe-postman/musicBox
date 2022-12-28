@@ -8,6 +8,6 @@ flask-migrate
 gunicorn
 redis
 rq
-psycopg2
+# psycopg2
 requests
 jinja2

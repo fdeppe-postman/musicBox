@@ -11,15 +11,13 @@ from db import db
 from blocklist import BLOCKLIST
 
 from resources.user import blp as UserBlueprint
-from resources.item import blp as ItemBlueprint
-from resources.store import blp as StoreBlueprint
-from resources.tag import blp as TagBlueprint
-
+from resources.song import blp as songBlueprint
+from resources.playlist import blp as PlaylistBlueprint
 
 def create_app(db_url=None):
     app = Flask(__name__)
     load_dotenv()
-    app.config["API_TITLE"] = "Stores REST API"
+    app.config["API_TITLE"] = "Playlists REST API"
     app.config["API_VERSION"] = "v1"
     app.config["OPENAPI_VERSION"] = "3.0.3"
     app.config["OPENAPI_URL_PREFIX"] = "/"
@@ -100,8 +98,7 @@ def create_app(db_url=None):
         )
 
     api.register_blueprint(UserBlueprint)
-    api.register_blueprint(ItemBlueprint)
-    api.register_blueprint(StoreBlueprint)
-    api.register_blueprint(TagBlueprint)
+    api.register_blueprint(songBlueprint)
+    api.register_blueprint(PlaylistBlueprint)
 
     return app
